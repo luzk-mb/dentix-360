@@ -96,10 +96,27 @@ footer {
     margin-top: 20px;
 }
 #inicio {
-    background-image: url("../img/dentix.png");
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url("../img/dentix.png");
     background-size: cover;
     background-position: center;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenido-hero {
+    text-align: center;
     color: white;
-    padding: 100px 20px;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+.contenido-hero h2 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.contenido-hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
 }
