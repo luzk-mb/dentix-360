@@ -51,7 +51,7 @@
     </section>
 
     <!-- EQUIPO -->
-    <section id="equipo">
+    <section id="servicios" class="animar">
         <h2>Nuestro Equipo</h2>
 
         <div class="card">
@@ -68,12 +68,16 @@
     </section>
 
     <!-- CITAS -->
-    <section id="citas">
-        <h2>Agenda tu Cita</h2>
-        <p>Contáctanos y reserva fácilmente</p>
-        <button>Reservar ahora</button>
-    </section>
+  <section id="citas" class="animar">
+    <h2>Agenda tu Cita</h2>
 
+    <form action="/citas" method="POST" class="formulario">
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="email" name="correo" placeholder="Correo" required>
+        <input type="date" name="fecha" required>
+        <button type="submit">Reservar</button>
+    </form>
+</section>
     <!-- CONTACTO -->
     <section id="contacto">
         <h2>Contacto</h2>
