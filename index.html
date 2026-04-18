@@ -72,13 +72,15 @@
     <section id="citas" class="animar">
         <h2>Agenda tu Cita</h2>
 
-        <form action="/citas" method="POST" class="formulario">
-            <input type="text" name="nombre" placeholder="Nombre" required>
-            <input type="email" name="correo" placeholder="Correo" required>
-            <input type="date" name="fecha" required>
-            <button type="submit">Reservar</button>
-        </form>
-    </section>
+        <form id="formCita" class="formulario">
+    <input type="text" id="nombre" placeholder="Nombre" required>
+    <input type="email" id="correo" placeholder="Correo" required>
+    <input type="date" id="fecha" required>
+    <button type="submit">Reservar</button>
+</form>
+
+<h3>Citas registradas</h3>
+<ul id="listaCitas"></ul>
 
     <!-- CONTACTO -->
     <section id="contacto">
