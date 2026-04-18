@@ -81,7 +81,7 @@
 
 <h3>Citas registradas</h3>
 <ul id="listaCitas"></ul>
-
+</section>
     <!-- CONTACTO -->
     <section id="contacto">
         <h2>Contacto</h2>
@@ -96,21 +96,60 @@
     </footer>
 
     <script>
-        const elementos = document.querySelectorAll('.animar');
+const API = "http://localhost:3000/citas";
 
-        const mostrarScroll = () => {
-            elementos.forEach(el => {
-                const top = el.getBoundingClientRect().top;
-                const visible = window.innerHeight - 100;
+const form = document.getElementById("formCita");
+const lista = document.getElementById("listaCitas");
 
-                if (top < visible) {
-                    el.classList.add('visible');
-                }
-            });
-        };
+// 📌 GUARDAR CITA
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-        window.addEventListener('scroll', mostrarScroll);
-    </script>
+    const data = {
+        nombre: document.getElementById("nombre").value,
+        correo: document.getElementById("correo").value,
+        fecha: document.getElementById("fecha").value
+    };
+
+    await fetch(API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    });
+
+    form.reset();
+    cargarCitas();
+});
+
+// 📌 MOSTRAR CITAS
+async function cargarCitas() {
+    const res = await fetch(API);
+    const citas = await res.json();
+
+    lista.innerHTML = "";
+
+    citas.forEach(cita => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+            ${cita.nombre} - ${cita.fecha}
+            <button onclick="cancelar(${cita.id})">Cancelar</button>
+        `;
+        lista.appendChild(li);
+    });
+}
+
+// 📌 CANCELAR CITA
+async function cancelar(id) {
+    await fetch(API + "/" + id, {
+        method: "PUT"
+    });
+
+    cargarCitas();
+}
+
+// Cargar al iniciar
+cargarCitas();
+</script>
 
 </body>
 </html>
